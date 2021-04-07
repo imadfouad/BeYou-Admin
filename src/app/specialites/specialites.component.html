@@ -1,0 +1,129 @@
+<div class="alt-menu sidebar-noneoverflow" >
+
+  <!--  BEGIN MAIN CONTAINER  -->
+  <div class="main-container sidebar-close sbar-open" id="container">
+  
+  <!--  BEGIN CONTENT AREA  -->
+  <div id="content" class="main-content">
+      <div class="layout-px-spacing">                
+          <div class="row layout-spacing layout-top-spacing" id="cancel-row">
+              <div class="col-lg-12">
+                  <div class="widget-content searchable-container list">
+  
+                      <div class="row">
+                          <div class="col-xl-4 col-lg-5 col-md-5 col-sm-7 filtered-list-search layout-spacing align-self-center">
+                              <form class="form-inline my-2 my-lg-0">
+                                  <div class="">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                      <input type="text" class="form-control product-search" id="input-search" placeholder="Search Contacts...">
+                                  </div>
+                              </form>
+                          </div>
+  
+                          <div class="col-xl-8 col-lg-7 col-md-7 col-sm-5 text-sm-right text-center layout-spacing align-self-center">
+                              <div  (click)="addLoad()" style="color: blue; cursor: pointer;" class="d-flex justify-content-sm-end justify-content-center">
+                                  <svg   xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                              </div>
+  
+                              <!-- Modal -->
+                              <div class="modal fade" id="addContactModal" tabindex="-1" role="dialog" aria-labelledby="addContactModalTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-body">
+                                              <i class="flaticon-cancel-12 close" data-dismiss="modal"></i>
+                                              <div class="add-contact-box">
+                                                  <div class="add-contact-content">
+                                                      <form #f="ngForm" ngNativeValidate   id="addContactModalTitle">
+                                                          <div class="row">
+                                                              <div class="col-md-12">
+                                                                  <div class="contact-location">
+                                                                      <i class="flaticon-location-1"></i>
+                                                                      <input type="text" ngModel="" required  name="sectionName" id="sectionName" class="form-control" placeholder="Nom de la section">
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                          <button id="btn-add" type="submit" class="btn btn-info mt-4">Ajouter</button>
+                                                      </form>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        <!--  <div class="modal-footer">
+                                              <button id="btn-edit" class="float-left btn">Save</button>
+  
+                                              <button class="btn" data-dismiss="modal"> <i class="flaticon-delete-1"></i> Discard</button>
+  
+
+                                          </div>--> 
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+  
+                      <div class="searchable-items list" style="width: 110%;">
+                          <div class="items items-header-section">
+                              <div class="item-content"  style="padding-right: 40px;">
+                                  <div class="">
+                                      <h4>Id</h4>
+                                  </div>
+                                  <div class="user-email">
+                                      <h4>Domaine</h4>
+                                  </div>
+                                  <div class="user-location">
+                                      <h4 style="margin-left: 0;">Abonnés</h4>
+                                  </div>
+                                  <div class="user-phone">
+                                    <h4 style="margin-left: 3px;">Modifier</h4>
+                                </div>
+                                  <div class="user-phone">
+                                    <h4 style="margin-left: 3px;">Supprimer</h4>
+                                </div>
+                              </div>
+                          </div>
+  
+                          <div class="items" *ngFor="let s of domaine.specialites">
+                              <div class="item-content">
+
+                                  <div class="user-email" >
+                                      <p class="info-title">Email: </p>
+                                      <p class="usr-email-addr" data-email="alan@mail.com">{{s.id}}</p>
+                                  </div>
+                                  <div class="user-status" >
+                                      <span class="usr-email-addr">{{s.specialiteName}}</span>
+                                  </div>
+                                  <div class="user-phone" >
+                                      <p class="info-title">Phone: </p>
+                                      <a [routerLink]="['/abonnesSpecialite',s.id]"  abonnesSpecialite class="usr-ph-no btn btn-info" data-phone="+1 (070) 123-4567">Abonnés</a>
+                                  </div>
+                                  <!--modifier-->
+                                  <div>
+                                    <a [routerLink]="['/updateSpecialite',s.id]"  class="btn btn-warning">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                  </div>
+                                  <!--fin modifier-->
+                                  <div>
+                                    <button class="btn btn-danger" (click)="deleteSpecialite(s.id)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                  </div>
+                  
+                              </div>
+                          </div>
+  
+                      </div>
+  
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--  END CONTENT AREA  -->
+  
+  </div>
+  </div>
+  
+  
+  
+  
+  

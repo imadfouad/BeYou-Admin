@@ -1,0 +1,115 @@
+<div class="row" style="margin-top: 3%;">
+    <div class="col-md-6 offset-3" >
+
+
+
+     
+     
+            <select  class="form-control " (change)="activeTable($event) " size="3" id="select" *ngIf="domaines">
+              
+                    <option (click)="getSpecialites(d.domaineName)" *ngFor="let d of domaines._embedded.domaines ">
+                        {{ d.domaineName }}
+                    </option>
+              
+            </select>
+            
+        </div>
+
+</div>
+
+<!--villes-->
+<div *ngIf="domaines">
+      <div [ngStyle]="{'display':(selectedOption == d.domaineName ) ? '' : 'none' }" *ngFor="let d of domaines._embedded.domaines">
+
+
+          <form   #f="ngForm" class="mt-4" (ngSubmit)="addSpecialite(f.value , d.domaineName)" >
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col"></div>
+              <div class="col">
+                <input ngModel="" type="text" name="specialiteName" id="specialiteName" class="form-control" placeholder="Specialite">
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-success">Ajouter Specialite ({{d.domaineName}})</button>
+              </div>
+            </div>
+          </form>
+
+        <!--PROBLEM KIBDA MN HNA-->
+        
+        <table id="{{ d.domaineName }}" [ngStyle]="{'display':(selectedOption == d.domaineName ) ? '' : 'none' }" class="table table-striped table-bordered table-hover" style="width: 90%;margin: 40px;">
+
+
+            <thead>
+              <tr class="row">
+                <td class="font-weight-bold col-4 "align="center" >Spécialité</td>
+                <td class="font-weight-bold col-4" align="center">Modifier</td>
+                <td scope="col" class="font-weight-bold col-4" align="center">Supprimer</td>
+              </tr>
+            </thead>
+          
+          
+            <tbody *ngIf="specialites">
+          
+              <tr *ngFor="let s of specialites" class="row">
+
+                <div class="col-8">
+                  
+          
+                    <form #f="ngForm" (ngSubmit)="modifierSpecialite(s.id,f.value)" class="row">
+          
+                      <td  class="col-6">
+                        <input ngModel="" name="specialiteName" id="specialiteName" type="text" class="pl-3 form-control" style="font-weight: bolder;font-size: 1.2em;"
+                               placeholder="{{ s.specialiteName }}">
+                      </td>
+            
+                      <td align="center" class="col-6">
+                        <button class="btn btn-warning">
+                          <i class="fa fa-edit" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                      
+                    </form>
+                      
+            
+                 
+                </div>
+                
+          
+                <td class="col-4" align="center" >
+                    <button (click)="deleteSpecialite(s.id)" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </td>
+          
+              </tr>
+            </tbody>
+            
+          </table>
+
+      </div>
+</div>
+
+
+<!-- pagination 
+
+<div class="row ml-5">
+  <nav>
+    <ul class="pagination" *ngIf="specialites">
+      <li *ngFor="let p of pagesArray; let i = index" [class.active]="currentPage == i" class="page-item">
+          <a class="page-link"  (click)="pageSpecialites(i)">{{i}}</a>
+        </li>
+    </ul>
+  </nav>
+</div>
+-->
+
+  
+
+
+
+  
+
+  <script>
+      
+  </script>

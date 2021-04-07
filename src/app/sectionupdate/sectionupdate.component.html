@@ -1,0 +1,57 @@
+
+<div class="alt-menu sidebar-noneoverflow" >
+
+    <!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container sidebar-open sbar-closed" id="container">
+                
+            <!--  BEGIN CONTENT AREA  -->
+            <div id="content" class="main-content">
+                <div class="container">
+
+                    <div class="container">
+
+                        <div id="navSection" data-spy="affix" class="nav  sidenav">
+                            <div class="sidenav-content">
+                                <a href="#basic" class="active nav-link">Basic</a>
+                                <a href="#form_grid_layouts" class="nav-link">Form Grid Layouts</a>
+                                <a href="#helper_text" class="nav-link">Helper Text</a>
+                                <a href="#form_sizing" class="nav-link">Sizing</a>
+                                <a href="#readonly_input" class="nav-link">Readonly Input</a>
+                                <a href="#html_custom_file_upload" class="nav-link">HTML Custom File Upload</a>
+                                <a href="#disabled_form" class="nav-link">Disabled Fields</a>
+                                <a href="#custom_bs_forms" class="nav-link">Custom Bootstrap Forms</a>
+                            </div>
+                        </div>
+                        
+                        <div class="row layout-top-spacing" >
+                    
+                            <div class="col-lg-12 col-12 layout-spacing" >
+                                <div class="statbox widget box box-shadow" style="width: 300%">
+                                    <div class="widget-header" >                                
+                                        <div class="row">
+                                            <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                <h4>Form controls</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content widget-content-area">
+                                        <form #f="ngForm" ngNativeValidate (ngSubmit)="modifierSection(f.value)">
+                                            <input type="hidden" [(ngModel)]="section.id"  id="id" name="id" >
+                                            <div class="form-group mb-4">
+                                                <label for="exampleFormControlInput2">Nom de la section</label>
+                                                <input type="text" class="form-control" [(ngModel)]="section.sectionName"  id="sectionName" name="sectionName" placeholder="nom section">
+                                            </div>
+                                            <input type="submit" name="time" value="Modifier" class="mt-4 mb-4 btn btn-primary">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--  END CONTENT AREA  -->
+    </div>
+</div>

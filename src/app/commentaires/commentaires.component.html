@@ -1,0 +1,41 @@
+<table class="table table-striped table-bordered table-hover"  style="width: 90%;margin: 40px;">
+    <thead>
+      <tr class="row">
+        <td  class="font-weight-bold col-md-2" >Username</td>
+        <td class="font-weight-bold col-md-8" >Contenu</td>
+        <td scope="col" class="font-weight-bold col-md-2" align="center">Supprimer</td>
+      </tr>
+    </thead>
+
+      <tbody *ngIf="commentaires">
+            <tr class="row" *ngFor="let c of commentaires._embedded.commentaires">
+        
+                  <td class="col-md-2" *ngIf="c.isSignale == true"> <i class="fa fa-user" aria-hidden="true"></i> 
+                    <span class="pl-3" style="font-weight: bolder;font-size: 1.2em;"> {{ c.userCommentaire.username }} </span>
+                  </td>
+
+                  <td  class="col-md-8" scope="row" *ngIf="c.isSignale == true">{{ c.contenu }}</td>
+
+          
+                  <td class="col-md-2" *ngIf="c.isSignale == true" align="center">
+                      <button (click)="deleteCommentaire(c.id)"  class="btn btn-danger">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                  </td>
+            </tr>
+      </tbody>
+
+</table>
+
+<div class="row ml-5">
+  <nav>
+    <ul class="pagination" *ngIf="commentaires">
+      <li *ngFor="let p of pagesArray; let i = index" [class.active]="currentPage == i" class="page-item">
+          <a class="page-link"  (click)="pageCommentaires(i)">{{i}}</a>
+        </li>
+    </ul>
+  </nav>
+</div>
+
+
+<br><br><br><br>

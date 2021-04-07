@@ -1,0 +1,69 @@
+<br><br>
+
+<form   #f="ngForm" (ngSubmit)="addPays(f.value)">
+    <div class="form-row">
+        <div class="col"></div>
+        <div class="col"></div>
+      <div class="col">
+        <input ngModel="" type="text" name="paysName" id="paysName" class="form-control" placeholder="Nom du pays">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-success">Ajouter un pays   </button>
+      </div>
+    </div>
+</form>
+
+
+<table class="table table-striped table-bordered table-hover"  style="width: 90%;margin: 40px;">
+    <thead>
+      <tr class="row">
+        <td  class="font-weight-bold col-md-4" align="center" >   Pays :</td>
+        <td class="font-weight-bold col-md-4" align="center" >Modifier</td>
+        <td scope="col" class="font-weight-bold col-md-4" align="center">Supprimer</td>
+      </tr>
+    </thead>
+
+      <tbody *ngIf="payses">
+            <tr class="row" *ngFor="let p of payses._embedded.payses">
+        
+              <div class="col-md-8">
+
+                <form #f="ngForm" (ngSubmit)="modifierPays(p.id,f.value)" class=" row">
+
+                  <td class="col-md-6"  align="center"> 
+                    <input ngModel="" name="paysName" id="paysName" type="text" class="pl-3 form-control" style="font-weight: bolder;font-size: 1.2em;"
+                     placeholder="{{ p.paysName }}">
+                  </td>
+
+                  <td  class="col-md-6" scope="row" align="center" >  
+                    <button  class="btn btn-warning" type="submit" >
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                    </button>
+                  </td>
+
+                </form>
+
+              </div>
+                
+          
+                  <td class="col-md-4"  align="center">
+                      <button  class="btn btn-danger" (click)="supprimerPays(p.id)">
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                  </td>
+            </tr>
+      </tbody>
+
+</table>
+
+<div >
+    <div class="row ml-5">
+        <nav >
+          <ul class="pagination" *ngIf="payses">
+            <li *ngFor="let p of pagesArray; let i = index" [class.active]="currentPage == i" class="page-item">
+                <a class="page-link"  (click)="pagePayses(i)">{{i}}</a>
+              </li>
+          </ul>
+        </nav>
+      </div>
+</div>

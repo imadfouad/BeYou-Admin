@@ -1,0 +1,21 @@
+.page-header {
+padding-bottom: 9px;
+margin: 0;
+border-bottom: 1px solid transparent;
+text-align: left;background-color: #fff;padding: 32px 22px 32px 15px;}
+.panel-left{  
+width: 100px;
+height: 100px;
+background: #0866C6;
+border: 2px solid #4590DA;
+/* border-radius: 100%; */
+overflow: hidden;
+
+margin: 12px;}
+
+agm-map {
+  height: 500px;
+}
+
+
+ 

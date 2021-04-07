@@ -1,0 +1,37 @@
+
+<div class="alt-menu sidebar-noneoverflow" >
+
+    <!--  BEGIN MAIN CONTAINER  -->
+    <div class="main-container sidebar-open sbar-closed" id="container">
+                            
+            <!--  BEGIN CONTENT AREA  -->
+            <div id="content" class="main-content">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="post-content">
+                        <div class="post-container">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-md pull-left">
+                            <div class="post-detail">
+                            <div class="user-info">
+                                <h5><a  [routerLink]="['/updateUser',poste.userPoste.id]" class="profile-link">{{poste.userPoste.username}}</a></h5>
+                            </div>
+                            <div class="reaction">
+                                <a class="btn text-green"><i class="fa fa-thumbs-up"></i> {{poste.nbLikes}}</a>
+                            </div>
+                            <div class="line-divider"></div>
+                            <div class="post-text">
+                                <p>{{poste.contenu}}<i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                            </div>
+                            <div class="line-divider"></div>
+                            <div class="post-comment" *ngFor="let c of commentaires._embedded.commentaires">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="profile-photo-sm">
+                                <p><a  [routerLink]="['/updateUser',c.userCommentaire.id]" class="profile-link" style="color: salmon; font-weight: bolder; font-size: 1.2em;">{{c.userCommentaire.username}} </a><i class="em em-laughing"></i> {{c.contenu}} </p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

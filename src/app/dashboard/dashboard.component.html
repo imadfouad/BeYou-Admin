@@ -1,0 +1,214 @@
+        <!--  BEGIN CONTENT AREA  -->
+    <div class="main-container sidebar-open sbar-close" id="container">
+        <div id="content" class="main-content">
+          <div class="layout-px-spacing">
+
+              <div class="row layout-top-spacing">
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+                  <div class="widget widget-card-four">
+                      <div class="widget-content">
+                          <div class="w-content">
+                              <div class="w-info">
+                                  <h6 class="value">{{ utilisateurs  }}</h6>
+                                  <p class="">Utilisateurs</p>
+                              </div>
+                              <div class="">
+                                  <div class="w-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- <div class="progress">
+                                <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div> -->
+                      </div>
+                  </div>
+              </div>
+
+                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+                    <div class="widget widget-card-four">
+                        <div class="widget-content">
+                            <div class="w-content">
+                                <div class="w-info">
+                                    <h6 class="value">{{ postes  }}</h6>
+                                    <p class="">Postes signalés</p>
+                                </div>
+                                <div class="">
+                                    <div class="w-icon">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                    </div>
+                                </div>
+                            </div>
+                       <!-- <div class="progress">
+                                <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
+                      <div class="widget widget-card-four">
+                          <div class="widget-content">
+                              <div class="w-content">
+                                  <div class="w-info">
+                                      <h6 class="value">{{ commentaires  }}</h6>
+                                      <p class="">Commentaires signalés</p>
+                                  </div>
+                                  <div class="">
+                                      <div class="w-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- <div class="progress">
+                                <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div> -->
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                      <div class="widget widget-chart-three">
+                          <div class="widget-heading">
+                              <div class="">
+                                  <h5 class="">Unique Visitors</h5>
+                              </div>
+                          </div>
+                          <div class="widget-content">
+                              <!-- this creates a google map on the page with the given lat/lng from -->
+                              <!-- the component as the initial center of the map: -->
+                              <agm-map [zoom]="5" [latitude]="31.791702" [longitude]="-7.092620" >
+                                <agm-marker   [latitude]="p.latitude" [longitude]="p.longitude" *ngFor="let p of payses ;  let i = index" >    
+                                  <agm-info-window 
+                                    [isOpen]="false"
+                                    > {{p.paysName}}: {{  p.users?.length }} users
+                                  </agm-info-window>
+                                </agm-marker>
+                                <agm-marker   [latitude]="v.latitude" [longitude]="v.longitude" *ngFor="let v of villes ;  let i = index" [iconUrl]="$any(icon)">    
+                                  <agm-info-window 
+                                    [isOpen]="false"
+                                    > {{v.villeName}}: 
+                                  </agm-info-window>
+                                </agm-marker>
+                              </agm-map>
+
+                          </div>
+
+                          <div class="widget-content">
+                              <div id="uniqueVisits"></div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+                      <div class="widget widget-activity-three">
+
+                          <div class="widget-heading">
+                              <h5 class="">Notifications</h5>
+                          </div>
+
+                          <div class="widget-content">
+
+                              <div class="mt-container mx-auto">
+                                  <div class="timeline-line">
+                                      
+                                      <div class="item-timeline timeline-new">
+                                          <div class="t-dot">
+                                              <div class="t-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                                          </div>
+                                          <div class="t-content">
+                                              <div class="t-uppercontent">
+                                                  <h5>Logs</h5>
+                                                  <span class="">27 Feb, 2020</span>
+                                              </div>
+                                              <p><span>Updated</span> Server Logs</p>
+                                              <div class="tags">
+                                                  <div class="badge badge-primary">Logs</div>
+                                                  <div class="badge badge-success">CPanel</div>
+                                                  <div class="badge badge-warning">Update</div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="item-timeline timeline-new">
+                                          <div class="t-dot">
+                                              <div class="t-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+                                          </div>
+                                          <div class="t-content">
+                                              <div class="t-uppercontent">
+                                                  <h5>Mail</h5>
+                                                  <span class="">28 Feb, 2020</span>
+                                              </div>
+                                              <p>Send Mail to <a href="javascript:void(0);">HR</a> and <a href="javascript:void(0);">Admin</a></p>
+                                              <div class="tags">
+                                                  <div class="badge badge-primary">Admin</div>
+                                                  <div class="badge badge-success">HR</div>
+                                                  <div class="badge badge-warning">Mail</div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="item-timeline timeline-new">
+                                          <div class="t-dot">
+                                              <div class="t-danger"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                                          </div>
+                                          <div class="t-content">
+                                              <div class="t-uppercontent">
+                                                  <h5>Task Completed</h5>
+                                                  <span class="">01 Mar, 2020</span>
+                                              </div>
+                                              <p>Backup <span>Files EOD</span></p>
+                                              <div class="tags">
+                                                  <div class="badge badge-primary">Backup</div>
+                                                  <div class="badge badge-success">EOD</div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="item-timeline timeline-new">
+                                          <div class="t-dot">
+                                              <div class="t-warning"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg></div>
+                                          </div>
+                                          <div class="t-content">
+                                              <div class="t-uppercontent">
+                                                  <h5>Collect Docs</h5>
+                                                  <span class="">10 Mar, 2020</span>
+                                              </div>
+                                              <p>Collected documents from <a href="javascript:void(0);">Sara</a></p>
+                                              <div class="tags">
+                                                  <div class="badge badge-success">Collect</div>
+                                                  <div class="badge badge-warning">Docs</div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="item-timeline timeline-new">
+                                          <div class="t-dot">
+                                              <div class="t-dark"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg></div>
+                                          </div>
+                                          <div class="t-content">
+                                              <div class="t-uppercontent">
+                                                  <h5>Reboot</h5>
+                                                  <span class="">06 Apr, 2020</span>
+                                              </div>
+                                              <p>Server rebooted successfully</p>
+                                              <div class="tags">
+                                                  <div class="badge badge-warning">Reboot</div>
+                                                  <div class="badge badge-primary">Server</div>
+                                              </div>
+                                          </div>
+                                      </div>                                      
+                                  </div>                                    
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+      
+      <!--  END CONTENT AREA  -->
