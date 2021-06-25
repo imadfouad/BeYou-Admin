@@ -1,5 +1,7 @@
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 
 @Component({
@@ -18,7 +20,14 @@ export class DashboardComponent implements OnInit {
   public commentaires;
   public utilisateurs;
   public villes;
-  constructor(private http:HttpClient) { }
+  public tkn;
+  public roles;
+
+  constructor(private http:HttpClient,  private route: ActivatedRoute ) { 
+    this.route.queryParams.subscribe(params => {
+      this.tkn = params['tkn'];
+  });
+  }
 
   ngOnInit(): void {
 
@@ -81,6 +90,17 @@ export class DashboardComponent implements OnInit {
         }, err=>{
           console.log(err);
         })
+
+        //verification Administrateur
+        let jwtToken =  this.tkn;
+        let jwtHelper = new JwtHelperService();
+        if(jwtToken != null)
+          this.roles = jwtHelper.decodeToken(jwtToken).roles;
+        
+        //console.log(this.roles[0].authority == 'ADMIN')
+        if(jwtToken==null || !(this.roles[0].authority == 'ADMIN')  ){
+            window.location.href = "http://localhost:4200"
+        }
 
   }
   

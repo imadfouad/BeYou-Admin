@@ -36,6 +36,10 @@ export class SideBarComponent implements OnInit {
     this.router.navigateByUrl("/")
   }
 
+  redirectBeyou(){
+    window.location.href = "http://localhost:4200"
+  }
+
 
 
 
