@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { JwtHelperService } from "@auth0/angular-jwt";
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   public tkn;
   public roles;
 
-  constructor(private http:HttpClient,  private route: ActivatedRoute ) { 
+  constructor(private http:HttpClient,  private route: ActivatedRoute, private router:Router ) { 
     this.route.queryParams.subscribe(params => {
       this.tkn = params['tkn'];
   });
@@ -82,11 +82,12 @@ export class DashboardComponent implements OnInit {
         })
 
         //VILLES
-        this.http.get("http://localhost:8080/villes?size=100")
+        this.http.get("http://localhost:8080/villes?size=100&projection=p5")
         .subscribe(data=>{
 
           this.villes = data;
           this.villes = this.villes._embedded.villes
+          console.log(this.villes[1])
         }, err=>{
           console.log(err);
         })
@@ -94,13 +95,35 @@ export class DashboardComponent implements OnInit {
         //verification Administrateur
         let jwtToken =  this.tkn;
         let jwtHelper = new JwtHelperService();
-        if(jwtToken != null)
-          this.roles = jwtHelper.decodeToken(jwtToken).roles;
-        
-        //console.log(this.roles[0].authority == 'ADMIN')
-        if(jwtToken==null || !(this.roles[0].authority == 'ADMIN')  ){
+
+        let tk = localStorage.getItem('token');
+
+        if(tk==null && jwtToken==null){
+          window.location.href = "http://localhost:4200"
+        }
+
+        try{
+          if(jwtToken != null)
+            this.roles = jwtHelper.decodeToken(jwtToken).roles;
+        }
+        catch(e){
+          if(localStorage.getItem('token')!.toString!=null)
+          {
+            this.roles = jwtHelper.decodeToken(tk!).roles;
+          }
+          else 
             window.location.href = "http://localhost:4200"
         }
+        
+        //console.log(this.roles[0].authority == 'ADMIN')
+        if((jwtToken==null || !(this.roles[0].authority == 'ADMIN') && tk==null)  ){
+            //window.location.href = "http://localhost:4200"
+        }else{
+          localStorage.setItem('token',jwtToken)
+          this.router.navigateByUrl("/")
+        }
+
+
 
   }
   

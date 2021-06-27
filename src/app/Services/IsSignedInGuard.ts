@@ -11,37 +11,22 @@ export class IsSignedInGuard implements CanActivate {
     roles;
 
     constructor(private _router: Router , private route: ActivatedRoute ) {
-        this.route.queryParams.subscribe(params => {
-            this.param1 = params['tkn'];
-        });
+        
     }
 
     
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         
-        let jwtToken =  this.param1;
+        let jwtToken = localStorage.getItem('token') ;
 
-        let jwtHelper = new JwtHelperService();
-        this.roles = jwtHelper.decodeToken(jwtToken).roles;
-        
-        console.log(jwtToken)
-
-        
-        return true;
-
-        /*if(jwtToken != null){
-            if(){
-                return true;
-            }else{
-                return false;
-            }
-            
+        if(jwtToken != null){
+            return true;
         }
         else{
-            this._router.navigateByUrl("/Connexion")
+            this._router.navigateByUrl("/")
             return false;
-        }*/
+        }
             
 
     }

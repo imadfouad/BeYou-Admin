@@ -82,13 +82,13 @@
                                 <agm-marker   [latitude]="p.latitude" [longitude]="p.longitude" *ngFor="let p of payses ;  let i = index" >    
                                   <agm-info-window 
                                     [isOpen]="false"
-                                    > {{p.paysName}}: {{  p.users?.length }} users
+                                    > {{p.paysName}}: {{  p.users?.length }} utilsateurs
                                   </agm-info-window>
                                 </agm-marker>
                                 <agm-marker   [latitude]="v.latitude" [longitude]="v.longitude" *ngFor="let v of villes ;  let i = index" [iconUrl]="$any(icon)">    
                                   <agm-info-window 
                                     [isOpen]="false"
-                                    > {{v.villeName}}: 
+                                    > {{v.villeName}}: {{ v.users?.length  }} utilisateurs
                                   </agm-info-window>
                                 </agm-marker>
                               </agm-map>

@@ -1,3 +1,4 @@
+import { IsSignedInGuard } from './Services/IsSignedInGuard';
 import { CommentairesignalesComponent } from './commentairesignales/commentairesignales.component';
 import { TestComponent } from './test/test.component';
 import { SectionsComponent } from './sections/sections.component';
@@ -32,7 +33,9 @@ const routes: Routes = [
   },
   {
     path:"test",
-    component: TestComponent
+    component: TestComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"dashboard",
@@ -40,93 +43,137 @@ const routes: Routes = [
   },
   {
     path:"users",
-    component: UsersComponent
+    component: UsersComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"postes",
-    component: PostesComponent
+    component: PostesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"commentaires",
-    component: CommentairesComponent
+    component: CommentairesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"domaines",
-    component: DomainesComponent
+    component: DomainesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"sections",
-    component: SectionsComponent
+    component: SectionsComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"pays",
-    component: PaysComponent
+    component: PaysComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"villes",
-    component: VillesComponent
+    component: VillesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"updateUser/:id",
-    component: UpdateuserComponent
+    component: UpdateuserComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"userPostes/:id",
-    component: UserpostesComponent
+    component: UserpostesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"detailsPoste/:id",
-    component: DetailposteComponent
+    component: DetailposteComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"abonnes",
-    component: AbonnesComponent
+    component: AbonnesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"postesSignales",
-    component: PostesignalesComponent
+    component: PostesignalesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"commentairesSignales",
-    component: CommentairesignalesComponent
+    component: CommentairesignalesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"sectionPostes/:sectionName",
-    component: PostesectionComponent
+    component: PostesectionComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"updateSection/:sectionId",
-    component: SectionupdateComponent
+    component: SectionupdateComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   }
   ,
   {
     path:"specialites/:id",
-    component: SpecialitesComponent
+    component: SpecialitesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   }
   ,
   {
     path:"updateDomaine/:id",
-    component: DomaineupdateComponent
+    component: DomaineupdateComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"abonnesSpecialite/:id",
-    component: SpecialiteabonnesComponent
+    component: SpecialiteabonnesComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"updateSpecialite/:id",
-    component: UpdatespecialiteComponent
+    component: UpdatespecialiteComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"addSection",
-    component: AddsectionComponent
+    component: AddsectionComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"addDomaine",
-    component: AdddomaineComponent
+    component: AdddomaineComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   },
   {
     path:"addSpecialite",
-    component: AddspecialiteComponent
+    component: AddspecialiteComponent,canActivate: [
+      IsSignedInGuard
+    ] 
   }
 ];
 

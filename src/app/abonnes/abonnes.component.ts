@@ -1,3 +1,4 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient , HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,10 +16,13 @@ export class AbonnesComponent implements OnInit {
   public pages;
   public pagesArray;
   public currentPage;
+  public roles;
+  tkn
 
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+   
     //users
     this.http.get("http://localhost:8080/appRoles/3?projection=p7&size=100")
     .subscribe(data=>{
